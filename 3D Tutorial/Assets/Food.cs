@@ -4,7 +4,10 @@ using UnityEngine;
 
 public class Food : MonoBehaviour
 {
-    // Start is called before the first frame update
+    float _rotationSpeed = 180f;
+    
+    public static string CurrentFoodMousedOver;
+
     void Start()
     {
         
@@ -18,6 +21,18 @@ public class Food : MonoBehaviour
 
     void OnMouseEnter()
     {
-        
+        transform.Find("Spot Light").gameObject.SetActive(true);
+        CurrentFoodMousedOver = name;
+    }
+
+    void OnMouseOver()
+    {
+        transform.Find("Food Mesh").Rotate(Vector3.up, _rotationSpeed * Time.deltaTime);
+    }
+
+    void OnMouseExit()
+    {
+        transform.Find("Spot Light").gameObject.SetActive(false);
+        CurrentFoodMousedOver = "";
     }
 }

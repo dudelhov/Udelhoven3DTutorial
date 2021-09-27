@@ -7,5 +7,6 @@ using UnityEngine;
 public class RuntimeData : ScriptableObject
 {
     public string CurrentFoodMousedOver;
+    public GameplayState CurrentCameplayState;
 
 }

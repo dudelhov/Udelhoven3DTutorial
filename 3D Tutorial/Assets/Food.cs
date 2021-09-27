@@ -10,13 +10,13 @@ public class Food : MonoBehaviour
 
     void Start()
     {
-        
+
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+
     }
 
     void OnMouseEnter()
@@ -27,7 +27,7 @@ public class Food : MonoBehaviour
 
     void OnMouseOver()
     {
-        transform.Find("Food Mesh").Rotate(Vector3.up, _rotationSpeed * Time.deltaTime);
+        transform.Find("Food Mesh").RotateAround(transform.position, Vector3.up, _rotationSpeed * Time.deltaTime);
     }
 
     void OnMouseExit()

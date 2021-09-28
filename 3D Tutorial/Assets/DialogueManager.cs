@@ -46,6 +46,7 @@ public class DialogueManager : MonoBehaviour
         ShowSlide();
         ShowAvatar();
         GetComponent<Canvas>().enabled = true;
+        _runtimeData.CurrentCameplayState = GameplayState.InDialog;
     }
     void OnDialogFinished(object sender, EventArgs args)
     {

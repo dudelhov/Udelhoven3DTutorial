@@ -3,17 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
+
+public class DialogueEventArgs : EventArgs
+{
+    public Dialogue dialoguePayload;
+}
+
 public static class GameEvents
 {
-    public static event EventHandler DialogInitiated;
+    public static event EventHandler<DialogueEventArgs> DialogInitiated;
     public static event EventHandler DialogFinished;
 
-    public static void InvokeDialogIntiated()
+    public static void InvokeDialogIntiated(Dialogue dialog)
     {
-        DialogInitiated(null, EventArgs.Empty);
+        DialogInitiated(null, new DialogueEventArgs { dialoguePayload = dialog });
     }
-    public static void InvokeDialogFinish()
+    public static void InvokeDialogFinished()
     {
-        DialogFinish(null, EventArgs.Empty);
+        DialogFinished(null, EventArgs.Empty);
     }
 }

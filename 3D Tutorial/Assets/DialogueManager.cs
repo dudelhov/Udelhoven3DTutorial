@@ -3,18 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 using UnityEngine.UI;
+using System;
 
 public class DialogueManager : MonoBehaviour
 {
-    [SerializeField] Dialogue _currentDialogue;
+    Dialogue _currentDialogue;
     int _currentSlideIndex = 0;
     [SerializeField] RuntimeData _runtimeData;
 
-    // Start is called before the first frame update
+    void Awake()
+    {
+        GameEvents.DialogFinished += OnDialogFinished;
+        GameEvents.DialogInitiated += OnDialogInitiated;
+    }
     void Start()
     {
-        ShowSlide();
-        ShowAvatar();
+
+
     }
 
     // Update is called once per frame
@@ -29,12 +34,24 @@ public class DialogueManager : MonoBehaviour
             }
             else
             {
-                GetComponent<Canvas>().enabled = false;
-                _runtimeData.CurrentCameplayState = GameplayState.FreeWalk;
+                GameEvents.InvokeDialogFinished();
             }
         }
     }
 
+    void OnDialogInitiated(object sender, DialogueEventArgs args)
+    {
+        _currentDialogue = args.dialoguePayload;
+        _currentSlideIndex = 0;
+        ShowSlide();
+        ShowAvatar();
+        GetComponent<Canvas>().enabled = true;
+    }
+    void OnDialogFinished(object sender, EventArgs args)
+    {
+        GetComponent<Canvas>().enabled = false;
+        _runtimeData.CurrentCameplayState = GameplayState.FreeWalk;
+    }
 
     void ShowSlide()
     {

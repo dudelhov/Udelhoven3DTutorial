@@ -6,10 +6,15 @@ public class Initializer : MonoBehaviour
 {
 
     [SerializeField] RuntimeData _runtimeData;
+    [SerializeField] Dialogue _startingDialogue;
     // Start is called before the first frame update
     void Awake()
     {
         _runtimeData.CurrentFoodMousedOver = "";
         _runtimeData.CurrentCameplayState = GameplayState.InDialog;
+    }
+    void Start()
+    {
+        GameEvents.InvokeDialogIntiated(_startingDialogue);
     }
 }

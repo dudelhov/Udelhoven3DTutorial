@@ -37,6 +37,10 @@ public class DialogueManager : MonoBehaviour
                 GameEvents.InvokeDialogFinished();
             }
         }
+        if (Input.GetKeyDown("e"))
+        {
+            GameEvents.InvokeDialogFinished();
+        }
     }
 
     void OnDialogInitiated(object sender, DialogueEventArgs args)

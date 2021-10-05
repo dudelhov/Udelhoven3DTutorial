@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class FoodQuiz : MonoBehaviour
 {
+    [SerializeField] RuntimeData _runtimeData;
     [SerializeField] Dialogue _dialogue;
     [SerializeField] Dialogue _correctChoiceDialogue;
     [SerializeField] Dialogue _incorrectChoiceDialogue;
@@ -33,10 +34,12 @@ public class FoodQuiz : MonoBehaviour
         if (food == _correctFood)
         {
             GameEvents.InvokeDialogIntiated(_correctChoiceDialogue);
+            _runtimeData.Score++;
         }
         else
         {
             GameEvents.InvokeDialogIntiated(_incorrectChoiceDialogue);
+            _runtimeData.Score--;
         }
 
         Destroy(food);

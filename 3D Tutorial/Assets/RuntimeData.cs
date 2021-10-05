@@ -8,5 +8,6 @@ public class RuntimeData : ScriptableObject
 {
     public string CurrentFoodMousedOver;
     public GameplayState CurrentCameplayState;
+    public int Score = 0;
 
 }

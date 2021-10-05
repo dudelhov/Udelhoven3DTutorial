@@ -4,10 +4,12 @@ using UnityEngine;
 
 public class FoodQuiz : MonoBehaviour
 {
+    bool _correctChosen = false;
     [SerializeField] RuntimeData _runtimeData;
     [SerializeField] Dialogue _dialogue;
     [SerializeField] Dialogue _correctChoiceDialogue;
     [SerializeField] Dialogue _incorrectChoiceDialogue;
+    [SerializeField] Dialogue _noCorrectChoiceLeftDialogue;
 
     [SerializeField] GameObject _correctFood;
     // Start is called before the first frame update
@@ -24,25 +26,31 @@ public class FoodQuiz : MonoBehaviour
 
     void OnTriggerEnter()
     {
-        GameEvents.InvokeDialogIntiated(_dialogue);
+        GameEvents.InvokeDialogInitiated(_dialogue);
     }
 
     public IEnumerator FoodSelected(GameObject food)
     {
         yield return new WaitForEndOfFrame();
 
-        if (food == _correctFood)
+        if (!_correctChosen)
         {
-            GameEvents.InvokeDialogIntiated(_correctChoiceDialogue);
-            _runtimeData.Score++;
+            if (food == _correctFood)
+            {
+                GameEvents.InvokeDialogInitiated(_correctChoiceDialogue);
+                _runtimeData.Score++;
+                _correctChosen = true;
+            }
+            else
+            {
+                GameEvents.InvokeDialogInitiated(_incorrectChoiceDialogue);
+                _runtimeData.Score--;
+            }
+            Destroy(food);
         }
         else
         {
-            GameEvents.InvokeDialogIntiated(_incorrectChoiceDialogue);
-            _runtimeData.Score--;
+            GameEvents.InvokeDialogInitiated(_noCorrectChoiceLeftDialogue);
         }
-
-        Destroy(food);
-
     }
 }

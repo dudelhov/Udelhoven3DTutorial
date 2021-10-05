@@ -1079,6 +1079,10 @@ PrefabInstance:
       propertyPath: _incorrectChoiceDialogue
       value: 
       objectReference: {fileID: 11400000, guid: dd4ca8ee04aba7c4abecbf21ee98442f, type: 2}
+    - target: {fileID: 954753283672700175, guid: dbbdb761c9276cd49ad97f8c8d653351, type: 3}
+      propertyPath: _noCorrectChoiceLeftDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: b6b29ef0ad37161468b36caab7808fd5, type: 2}
     - target: {fileID: 2746013534184964108, guid: dbbdb761c9276cd49ad97f8c8d653351, type: 3}
       propertyPath: m_Name
       value: Chocolate Donut
@@ -6091,6 +6095,10 @@ PrefabInstance:
       propertyPath: _incorrectChoiceDialogue
       value: 
       objectReference: {fileID: 11400000, guid: eb3e703915db1cd4195dcf4e2e68ef39, type: 2}
+    - target: {fileID: 954753283672700175, guid: dbbdb761c9276cd49ad97f8c8d653351, type: 3}
+      propertyPath: _noCorrectChoiceLeftDialogue
+      value: 
+      objectReference: {fileID: 11400000, guid: 960e6a042dc44cd44bbd08db2a26acc6, type: 2}
     - target: {fileID: 3088460323144540002, guid: dbbdb761c9276cd49ad97f8c8d653351, type: 3}
       propertyPath: m_RootOrder
       value: 7

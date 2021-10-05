@@ -16,6 +16,6 @@ public class Initializer : MonoBehaviour
     }
     void Start()
     {
-        GameEvents.InvokeDialogIntiated(_startingDialogue);
+        GameEvents.InvokeDialogInitiated(_startingDialogue);
     }
 }

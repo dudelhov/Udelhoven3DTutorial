@@ -14,7 +14,7 @@ public static class GameEvents
     public static event EventHandler<DialogueEventArgs> DialogInitiated;
     public static event EventHandler DialogFinished;
 
-    public static void InvokeDialogIntiated(Dialogue dialog)
+    public static void InvokeDialogInitiated(Dialogue dialog)
     {
         DialogInitiated(null, new DialogueEventArgs { dialoguePayload = dialog });
     }
